@@ -42,7 +42,7 @@ Create service principal from a multi-tenant application registration (e.g., 993
 az rest --method POST --url https://graph.microsoft.com/v1.0/servicePrincipals --headers Content-type=application/json --body "{\"appId\": \"MULTITENANT_APP_ID\"}" -o json
 ```
 
-Try reading the service principal information, which should fail since our app identity does don't have read permissions
+Try reading the service principal information, which should fail since our app identity doesn't have read permissions
 
 ```bash
 az rest --method GET --url https://graph.microsoft.com/v1.0/servicePrincipals/SERVICE_PRINCIPAL_ID -o json
