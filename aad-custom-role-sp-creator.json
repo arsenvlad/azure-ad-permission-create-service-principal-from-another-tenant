@@ -1,0 +1,12 @@
+{
+    "displayName": "Service Principal creator from another tenant",
+    "description": "Can create service principals from multi-tenant app registrations in other Azure AD tenants.",
+    "isEnabled": true,
+    "rolePermissions": [
+        {
+            "allowedResourceActions": [
+                "microsoft.directory/servicePrincipals/create"
+            ]
+        }
+    ]
+ }
