@@ -62,6 +62,6 @@ After we are done with the experiments, **delete** the objects created above: ou
 
 The experiment above describes how an **application** can **programmatically** create a service principal after an implicit consent. If it is a **user** (i.e., not application), that needs to create the service principal, the user can use can grant the required permissions via **Azure AD consent page** by visiting:
 
-<https://login.microsoftonline.com/common/oauth2/authorize?client_id=MULTI-TENANT_APPLICATION_ID&response_type=code>
+<https://login.microsoftonline.com/YOUR_TENANT_ID/oauth2/authorize?client_id=MULTI-TENANT_APPLICATION_ID&response_type=code>
 
 ![User consent in the browser](./images/user-consent.png)
