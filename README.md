@@ -1,6 +1,8 @@
 # Azure AD least-privilege permission for creating service principal from a multi-tenant application registration in another Azure AD tenant
 
-In this sample, we look at what is the least-privilege permission or Azure AD role that an app identity needs to be able to create a Service Principal from a multi-tenant application registration in another Azure AD tenant. By least-privilege we mean that we don't want our app identity to have the `Application Administrator` or `Cloud Application Administrator` roles at the scope of the full directory and don't want it to be able to delete or update service principals.
+In this sample, we look at what is the least-privilege permission or Azure AD role that an app identity needs to be able to create a Service Principal from a multi-tenant application registration in another Azure AD tenant. See related video at [Azure AD least-privilege permission for creating Service Principal from a multi-tenant application registration in another tenant](https://arsenvlad.medium.com/azure-ad-least-privilege-permission-for-creating-service-principal-from-a-multi-tenant-application-1a6f338dac67).
+
+By least-privilege we mean that we don't want our app identity to have the `Application Administrator` or `Cloud Application Administrator` roles at the scope of the full directory and don't want it to be able to delete or update service principals.
 
 An example scenario for this requirement is a Continuous Integration (CI) testing automation workload that needs to create Service Principals from another Azure AD tenant programmatically - but we don't want this CI app identity to have full application admin access.
 
@@ -54,4 +56,12 @@ To be able to read the cross-tenant service principals that our workload creates
 
 > Note that when making changes to permissions of an already existing app identity you would need to re-login and wait some time for the cache to refresh and new permissions to apply. I saw it take up to 1 hour. Therefore, while experimenting, instead of making a change and waiting, it could be faster to create a new app identity and to use it instead.
 
-After we are done with the experiments, delete the objects created above: our test service principal, custom role, and the multi-tenant service principal.
+After we are done with the experiments, **delete** the objects created above: our test service principal, custom role, and the multi-tenant service principal.
+
+## User consent in the browser
+
+The experiment above describes how an **application** can **programmatically** create a service principal after an implicit consent. If it is a **user** (i.e., not application), that needs to create the service principal, the user can use can grant the required permissions via **Azure AD consent page** by visiting:
+
+<https://login.microsoftonline.com/common/oauth2/authorize?client_id=MULTI-TENANT_APPLICATION_ID&response_type=code>
+
+![User consent in the browser](./images/user-consent.png)
